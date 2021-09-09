@@ -41,11 +41,12 @@ The application will contain 3 pages:
 ### Backend Description <a name = "backend"></a>
 
 For the backend, we are planning to use Public APIs. 
+
 Here is the list of possible options to be used:
-MusicBrainz, AudioDB, or Deezer - music database
-Genius or Lyrics.ovh - song lyrics database
-TasteDive - artists database 
-Songkick - music events database
+- MusicBrainz, AudioDB, or Deezer - music database
+- Genius or Lyrics.ovh - song lyrics database
+- TasteDive - artists database 
+- Songkick - music events database
 
 ## Getting Started <a name = "getting_started"></a>
 
