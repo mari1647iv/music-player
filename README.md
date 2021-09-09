@@ -3,7 +3,7 @@
 [![Release][release-shield]][release-url]
 [![MIT License][license-shield]][license-url]
 
-# Music Player
+# Music Player - React Web Application
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
