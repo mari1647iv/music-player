@@ -1,6 +1,6 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
-[![Release][release-shield]][release-url]
+[![Tag][tag-shield]][tag-url]
 [![MIT License][license-shield]][license-url]
 
 # Music Player - React Web Application
@@ -85,7 +85,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 [contributors-url]: https://github.com/mari1647iv/music-player/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/mari1647iv/music-player.svg?style=for-the-badge
 [issues-url]: https://github.com/mari1647iv/music-player/issues
-[license-shield]: https://img.shields.io/github/license/mari1647iv/music-player.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/mari1647iv/music-player.svg?color=orange&style=for-the-badge
 [license-url]: https://github.com/mari1647iv/music-player/blob/main/LICENSE.md
-[release-shield]: https://img.shields.io/github/v/release/mari1647iv/music-player?style=for-the-badge
-[release-url]: https://github.com/mari1647iv/music-player/releases
+[tag-shield]: https://img.shields.io/github/v/tag/mari1647iv/music-player?style=for-the-badge
+[tag-url]: https://github.com/mari1647iv/music-player/releases
