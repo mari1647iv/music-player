@@ -1,35 +1,51 @@
-.idea/
-.vscode/
-node_modules/
-build
-build2
-.DS_Store
-*.tgz
-my-app*
-template/src/__tests__/__snapshots__/
-/.changelog
-.npm/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-scripts/flow/*/.flowconfig
-.flowconfig
-*~
-*.pyc
-.grunt
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
 _SpecRunner.html
 __benchmarks__
-remote-repo/
-coverage/
-.module-cache
-fixtures/dom/public/react-dom.js
-fixtures/dom/public/react.js
-test/the-files-to-test.generated.js
-*.log*
-chrome-user-data
+
+# production
+/build
+/build2
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# code editors
+.idea/
+*.iml
+.vscode/
 *.sublime-project
 *.sublime-workspace
-*.iml
+
+# archieves
+*.tgz
+*.zip
+
+# cache and temp files
+.module-cache
+.npm/
+
+# history
+*.log*
+/.changelog
+chrome-user-data
+
+#vim
 *.swp
 *.swo
+
+# devtools
 
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
@@ -43,3 +59,9 @@ packages/react-devtools-extensions/.tempUserDataDir
 packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-scheduling-profiler/dist
+
+# other
+my-app*
+*~
+*.pyc
+.grunt
