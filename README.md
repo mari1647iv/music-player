@@ -86,6 +86,6 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 [issues-shield]: https://img.shields.io/github/issues/mari1647iv/music-player.svg?style=for-the-badge
 [issues-url]: https://github.com/mari1647iv/music-player/issues
 [license-shield]: https://img.shields.io/github/license/mari1647iv/music-player.svg?color=orange&style=for-the-badge
-[license-url]: https://github.com/mari1647iv/music-player/blob/main/LICENSE.md
+[license-url]: https://github.com/mari1647iv/music-player/blob/main/LICENSE
 [tag-shield]: https://img.shields.io/github/v/tag/mari1647iv/music-player?style=for-the-badge
 [tag-url]: https://github.com/mari1647iv/music-player/tags
