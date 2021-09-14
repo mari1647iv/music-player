@@ -1,4 +1,7 @@
-.main {
-  text-align: center;
+.main-page {
   color: grey;
+}
+
+.main-page button {
+  margin: 20px;
 }
