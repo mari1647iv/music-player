@@ -1,0 +1,64 @@
+.colorful-button {
+  padding: 8px 50px;
+
+  background: linear-gradient(
+    115.62deg,
+    #00ffc2 16.53%,
+    #03a8a6 74.89%,
+    #03a5a5 76.77%
+  );
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.15);
+
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+
+  font-weight: 300;
+  font-size: 30px;
+  color: #2f2f2f;
+}
+.colorful-button:focus {
+  outline: none;
+}
+.colorful-button:hover {
+  box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.15);
+}
+.colorful-button:active {
+  box-shadow: inset 15px 15px 30px rgba(0, 0, 0, 0.15);
+}
+.colorful-button:disabled {
+  cursor: not-allowed;
+  background: transparent;
+  border: 1px solid #727272;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: #727272;
+}
+
+.icon-button {
+  padding: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #cecece;
+  font-weight: 300;
+  font-size: 30px;
+}
+.icon-button:focus {
+  outline: none;
+}
+.icon-button:hover {
+  color: #e5e5e5;
+}
+.icon-button:active {
+  color: white;
+}
+.icon-button:disabled {
+  cursor: not-allowed;
+  color: #727272;
+}
+
+button {
+  padding: 5px 10px;
+  border-radius: 7px;
+}
