@@ -39,7 +39,6 @@
   padding: 10px;
   background: transparent;
   border: none;
-  border-radius: 7px;
   cursor: pointer;
   color: #cecece;
   font-weight: 300;
@@ -49,8 +48,10 @@
   outline: none;
 }
 .icon-button:hover {
+  color: #e5e5e5;
 }
 .icon-button:active {
+  color: white;
 }
 .icon-button:disabled {
   cursor: not-allowed;
