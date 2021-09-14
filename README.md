@@ -1,5 +1,6 @@
 # Music Player - React Web Application
 
+[![CI][workflow-shield]][workflow-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![Tag][tag-shield]][tag-url]
@@ -83,6 +84,8 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+[workflow-shield]: https://img.shields.io/github/workflow/status/mari1647iv/music-player/Node.js%20CI?style=for-the-badge
+[workflow-url]: https://github.com/mari1647iv/music-player/actions/workflows/node.js.yml
 [contributors-shield]: https://img.shields.io/github/contributors/mari1647iv/music-player.svg?style=for-the-badge
 [contributors-url]: https://github.com/mari1647iv/music-player/graphs/contributors
 [issues-shield]: https://img.shields.io/github/issues/mari1647iv/music-player.svg?style=for-the-badge
