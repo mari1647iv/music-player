@@ -7,19 +7,10 @@
 
 # testing
 /coverage
-_SpecRunner.html
-__benchmarks__
 
 # production
 /build
 /build2
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 # code editors
 .idea/
@@ -61,7 +52,6 @@ packages/react-devtools-shell/dist
 packages/react-devtools-scheduling-profiler/dist
 
 # other
-my-app*
 *~
 *.pyc
 .grunt
