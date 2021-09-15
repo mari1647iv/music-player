@@ -12,12 +12,12 @@ function Components() {
         <div className="components-page"> 
             <p>Наши компоненты слева направо:</p>
             <div>
-                <Button type="colorful" children="Search"/> 
+                <Button type="colorful" children="Search" onClick={()=>{alert("Hi!");}}/> 
                 <Button type="icon" children="Search"/> 
                 <Button type="icon" children={<Play size={40}/>}/> 
                 <Button type="stuff" children="Search"/>
             </div><div>
-                <Button type="colorful" children="Search" isDisabled={true}/> 
+                <Button type="colorful" children="Search" onClick={()=>{alert("Hi!");}} isDisabled={true}/> 
                 <Button type="icon" children="Search" isDisabled={true}/> 
                 <Button type="icon" children={<Play size={40}/>} isDisabled={true}/> 
                 <Button type="stuff" children="Search" isDisabled={true}/> 
