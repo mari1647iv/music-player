@@ -7,10 +7,10 @@ import  DefaultImage from "../../assets/default.svg";
 function AudioBlock(props) {
   const { id, song, artist, image, duration } = props;
   return (
-    <label for={id} >
+    <label>
       <input type="radio" id={id} name="playlist" value={id} />
       <div className="audio-block">
-          <img src={image?image:DefaultImage} className="image"/>
+          <img src={image?image:DefaultImage} className="image" alt="Song album"/>
           <div className="info">
             <p className="song">{song}</p>
             <p className="artist">{artist}</p>
