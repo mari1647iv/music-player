@@ -1,7 +1,15 @@
 .components-page {
   color: grey;
+  width: 100%;
 }
 
 .components-page button {
   margin: 20px;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 80vw;
 }
