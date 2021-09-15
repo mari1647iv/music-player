@@ -1,6 +1,12 @@
 .components-page {
   color: grey;
   width: 100%;
+  padding-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .components-page button {
@@ -8,7 +14,7 @@
 }
 
 .components-page > div {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .components-page > div > .input-container {
