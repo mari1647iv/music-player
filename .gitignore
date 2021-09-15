@@ -55,3 +55,4 @@ packages/react-devtools-scheduling-profiler/dist
 *~
 *.pyc
 .grunt
+*_link
