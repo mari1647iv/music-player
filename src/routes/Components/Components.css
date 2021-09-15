@@ -4,7 +4,15 @@
 }
 
 .components-page button {
-  margin: 20px;
+  margin: 0 20px;
+}
+
+.components-page > div {
+  margin: 40px 0;
+}
+
+.components-page > div > .input-container {
+  margin: 10px 0;
 }
 
 .playlist {

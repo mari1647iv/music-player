@@ -37,11 +37,11 @@ function Components() {
                 </div>
             </div>
             <div>
-            <Input type="music"/>
-            <Input type="events"/>
-            <Input type="date"/>
-            <Input type="blablabla"/>
-        </div>
+                <Input type="music"/>
+                <Input type="events"/>
+                <Input type="date"/>
+                <Input type="blablabla"/>
+            </div>
         </div>
     );
 }
