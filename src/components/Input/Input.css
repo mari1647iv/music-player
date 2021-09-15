@@ -1,0 +1,76 @@
+.input-box {
+    width: 100%;
+    height: 60px;
+    padding-left: 94px;
+
+    background: #2F2F2F;
+    border: 1px solid #686868;
+    box-sizing: border-box;
+    box-shadow: inset 15px 15px 15px rgba(0, 0, 0, 0.1), inset -15px -15px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 7px 0px 0px 7px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    color: #CECECE;
+}
+
+.input-box:hover {
+    border: 1px solid #CECECE;
+}
+
+.input-box:focus {
+    background: #2F2F2F;
+    color: #CECECE;
+}
+
+.input-box::placeholder {color:#727272;}
+.input-box:hover::placeholder {color: #cecece;}
+
+.input-box::-webkit-input-placeholder {color:#727272;}
+.input-box::-moz-placeholder          {color:#727272;}/* Firefox 19+ */
+.input-box:-moz-placeholder           {color:#727272;}/* Firefox 18- */
+.input-box:-ms-input-placeholder      {color:#727272;}
+
+.input-box:hover::-webkit-input-placeholder {color:#cecece;}
+.input-box:hover::-moz-placeholder          {color:#cecece;}/* Firefox 19+ */
+.input-box:hover:-moz-placeholder           {color:#cecece;}/* Firefox 18- */
+.input-box:hover:-ms-input-placeholder      {color:#cecece;}
+
+.input-container {
+    position: relative;
+}
+.input-icon {
+    position:absolute;
+    left:12px;
+    top: 12px;
+    color: #727272;
+}
+
+.input-container:hover .input-icon {
+    color: #CECECE;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    padding: 12px;
+    padding-right: 46px;
+    left: -25px;
+    opacity: 0;
+}
+
+input[type="date"]{
+    color: #727272;
+}
+input[type="date"]:focus {
+    color: #CECECE;
+}
+
+
+
