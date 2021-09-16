@@ -1,8 +1,8 @@
 import React from "react";
-import "./Player.css";
+import "./MusicPlayer.css";
 import Header from "../../components/Header/Header";
 
-function Player() {
+function MusicPlayer() {
     return ( 
         <div className="player"> 
             <Header location="player"/>
@@ -11,4 +11,4 @@ function Player() {
     );
 }
 
-export default Player;
+export default MusicPlayer;
