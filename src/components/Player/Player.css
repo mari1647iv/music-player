@@ -1,0 +1,127 @@
+.minimized-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  min-width: 1060px;
+  padding: 23px 10vw;
+  box-sizing: border-box;
+
+  background: #1e1e1e;
+  box-shadow: 0px -30px 30px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.minimized-player-image {
+  width: 88px;
+  height: 88px;
+  border-radius: 8.5%;
+}
+
+.minimized-player-info {
+  min-width: 351px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  font-style: normal;
+  text-align: left;
+  text-decoration: none;
+}
+
+.maximized-player {
+  width: 878px;
+  padding: 10px 40px;
+  box-sizing: border-box;
+
+  background: transparent;
+  border: 1px solid #2f2f2f;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: no-wrap;
+}
+
+.maximized-player-image {
+  width: 200px;
+  height: 200px;
+  margin-right: 80px;
+  border-radius: 8.5%;
+
+  filter: drop-shadow(0px 70px 70px rgba(0, 0, 0, 0.25));
+}
+
+.maximized-player-info {
+  min-width: 561px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  font-style: normal;
+  text-align: left;
+  text-decoration: none;
+}
+
+.player-song {
+  font-weight: bold;
+  font-size: 44px;
+  line-height: 55px;
+
+  color: #cecece;
+}
+
+.player-artist {
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+
+  color: #727272;
+}
+
+.player-time {
+  margin: 0px 40px;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+
+  color: #cecece;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-grow: 2;
+  justify-content: center;
+}
+
+.isRepeat {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.isRepeat + i {
+  color: #727272;
+  cursor: pointer;
+}
+
+.isRepeat:checked + i {
+  color: #cecece;
+}

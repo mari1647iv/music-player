@@ -7,6 +7,7 @@ import Input from "../../components/Input/Input";
 import AudioBlock from "../../components/AudioBlock/AudioBlock";
 import Card from "../../components/Card/Card";
 import LyricsBlock from "../../components/LyricsBlock/LyricsBlock";
+import Player from "../../components/Player/Player";
 import WreckedImage from "../../assets/wrecked.jpg";
 import LFTGImage from "../../assets/lftg.jpg";
 import ArtistImage from "../../assets/artist.jpg";
@@ -28,12 +29,12 @@ function Components() {
             <Header location="components"/>
             <div className="components-page"> 
                 <p>Наши компоненты слева направо:</p>
-                <div>
+                <div className="buttons-div">
                     <Button type="colorful" children="Search" onClick={()=>{alert("Hi!");}}/> 
                     <Button type="icon" children="Search"/> 
                     <Button type="icon" children={<Play size={40}/>}/> 
                     <Button type="stuff" children="Search"/>
-                </div><div>
+                </div><div className="buttons-div">
                     <Button type="colorful" children="Search" onClick={()=>{alert("Hi!");}} isDisabled={true}/> 
                     <Button type="icon" children="Search" isDisabled={true}/> 
                     <Button type="icon" children={<Play size={40}/>} isDisabled={true}/> 
@@ -60,6 +61,9 @@ function Components() {
                     <Input type="blablabla"/>
                 </div>
                 <div>
+                    <Player size="maximized" song="Here's some song" artist="Some strange artist" duration="3:40"/>
+                </div>
+                <div>
                     <Card type="artist" image={ArtistImage} artist="Jason  Mraz" shortDescription="Guitarist, singer and songwriter." description="Lorem Ipsum. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet." youtubeLink="https://www.youtube.com" wikiLink="https://www.wikipedia.org/"/>
                     <Card type="event" image={ArtistImage} artist="Jason  Mraz" location="Tatneft Arena" city="Kazan" date="30.09.2021" time="20:00" eventLink="https://www.songkick.com/"/>
                     <Card type="blablabla"/>
@@ -68,8 +72,8 @@ function Components() {
                     <LyricsBlock lyrics={lyrics}/>
                 </div>
             </div>
-        </div>
-
+            <Player size="minimized" song="Here's some song" artist="Some strange artist" duration="3:40"/>
+        </div> 
     );
 }
 
