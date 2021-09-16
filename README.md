@@ -19,6 +19,7 @@
     <li><a href="#getting_started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#authors">Authors</a></li>
@@ -61,6 +62,25 @@ Download the project using
 
 ```bash
 git clone https://github.com/mari1647iv/music-player.git
+```
+Install project dependecies using `npm` 
+
+```npm
+npm i
+```
+
+### Installation <a name = "installation"></a>
+
+Start the application:
+
+```npm
+npm start
+```
+
+,or build it for production:
+
+```npm
+npm build
 ```
 
 ## Authors <a name = "authors"></a>
