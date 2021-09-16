@@ -14,7 +14,7 @@ function Header(props) {
       {location==="main"?"":<Link to="/main"><ArrowLeft size={55} color="#cecece" strokeWidth="1.5px"/></Link>}
       <Link to="/" className="link">
       <div className="title">
-        <s1>Frontend Project</s1>
+        <p>Frontend Project</p>
         <h1>Music Player</h1>
       </div>
       </Link>

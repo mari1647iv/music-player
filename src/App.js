@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./routes/Main/Main";
-import Player from "./routes/Player/Player";
+import MusicPlayer from "./routes/MusicPlayer/MusicPlayer";
 import Events from "./routes/Events/Events";
 import Components from "./routes/Components/Components";
 
@@ -16,7 +16,7 @@ function App() {
                 <Main />
             </Route>
             <Route path="/player">
-                <Player />
+                <MusicPlayer />
             </Route>
             <Route path="/events">
                 <Events />
