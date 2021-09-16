@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 
 
 function Player(props) {
-  const { size, id, song, artist, image, duration } = props;
+  const { size, song, artist, image, duration } = props;
   const [isPlaying, setIsPlaying] = useState(false);
 
   let current_time = "2:37";
