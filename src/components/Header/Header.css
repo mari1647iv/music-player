@@ -16,7 +16,7 @@ header {
   position: absolute;
   z-index: 0;
   left: 48%;
-  left: expression(50%-25px);
+  left: expression(50% - 25px);
   left: -webkit-calc(50% - 25px);
   left: -moz-calc(50% - 25px);
   left: -o-calc(50% - 25px);
