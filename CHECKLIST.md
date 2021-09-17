@@ -6,7 +6,7 @@
 
 ## Correctness of the Work (20%)
 
-  - [ ] Console check
+  - [x] Console check
 
 ## Infrastructure Setup (20%)
 
@@ -21,17 +21,18 @@
   
 ## Technologies Used (20%)
 
-  - [ ] Routing
+  - [x] Routing
   - [ ] Form handling
   - [ ] Global state management
-  - [ ] Isolated component styes
+  - [ ] Isolated component styles
 
 ## Architecture of Application (15%)
 
-  - [ ] Structure of a project
-  - [ ] Structure of routes
+  - [x] Structure of a project
+  - [x] Structure of routes
   - [ ] Structure of state (global/local)
-  - [ ] Division into components
+  - [x] Division into components
 
 ## UI/UX Design of Application (5%)
-  - [ ] Attractiveness and harmony of your interface
+
+  - [x] Attractiveness and harmony of your interface
