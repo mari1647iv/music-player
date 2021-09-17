@@ -36,3 +36,5 @@
 ## UI/UX Design of Application (5%)
 
   - [x] Attractiveness and harmony of your interface
+
+## Overall Progress - 45/100 - 27/60
