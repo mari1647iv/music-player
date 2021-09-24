@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const InputStyle = styled.div`
   position: relative;
-  margin: 10px;
 
   input {
     width: 100%;
@@ -13,7 +12,7 @@ export const InputStyle = styled.div`
     border: 1px solid #686868;
     box-sizing: border-box;
     box-shadow: inset 15px 15px 15px rgba(0, 0, 0, 0.1), inset -15px -15px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 7px 0px 0px 7px;
+    border-radius: 7px;
 
     font-style: normal;
     font-weight: 300;

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const ComponentsStyle = styled.div`
-  color: grey;
   width: 100%;
   padding-top: 30px;
   padding-bottom: 300px;
