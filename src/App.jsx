@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Route exact path="/">
           <Header />
-          <Components />
+          <Main />
         </Route>
         <Route path="/main">
           <Header />
