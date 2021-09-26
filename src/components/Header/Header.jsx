@@ -11,10 +11,10 @@ function Header() {
   return (
     <HeaderStyle>
       <TitleContainer>
-        {location === '/main' ? (
+        {location === '/' || location === '/main' ? (
           ''
         ) : (
-          <Link to="/main">
+          <Link to="/">
             <ArrowLeft size={55} color="#cecece" strokeWidth="1.5px" />
           </Link>
         )}

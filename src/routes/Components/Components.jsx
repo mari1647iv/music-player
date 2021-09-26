@@ -38,11 +38,11 @@ function Components() {
           >
             Search
           </Button>
-          <Button type="icon">Search</Button>
-          <Button type="icon">
+          <Button>Search</Button>
+          <Button>
             <Play size={40} />
           </Button>
-          <Button type="stuff">Search</Button>
+          <Button>Search</Button>
         </ButtonsGap>
         <ButtonsGap>
           <Button
@@ -54,15 +54,11 @@ function Components() {
           >
             Search
           </Button>
-          <Button type="icon" isDisabled={true}>
-            Search
-          </Button>
-          <Button type="icon" isDisabled={true}>
+          <Button isDisabled={true}>Search</Button>
+          <Button isDisabled={true}>
             <Play size={40} />
           </Button>
-          <Button type="stuff" isDisabled={true}>
-            Search
-          </Button>
+          <Button isDisabled={true}>Search</Button>
         </ButtonsGap>
         <PlaylistStyle>
           <div>

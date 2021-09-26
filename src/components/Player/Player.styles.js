@@ -5,6 +5,7 @@ export const MinimizedPlayer = styled.div`
   bottom: 0;
   left: 0;
   padding-bottom: 12px;
+  z-index: 10;
 
   width: 100vw;
   box-sizing: border-box;

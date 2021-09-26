@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ButtonStyles = styled.button`
+  min-height: 60px;
   border-radius: 7px;
   cursor: pointer;
   border: none;
@@ -9,7 +10,7 @@ export const ButtonStyles = styled.button`
   font-weight: 300;
   font-size: 30px;
 
-  padding: ${(props) => (props.isColorfull ? '8px 50px' : '10px')};
+  padding: ${(props) => (props.isColorfull ? '8px 60px' : '10px')};
 
   background: ${(props) =>
     props.isColorfull ? 'linear-gradient(115.62deg, #00ffc2 16.53%, #03a8a6 74.89%, #03a5a5 76.77%)' : 'transparent'};

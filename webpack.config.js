@@ -1,13 +1,13 @@
-const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const ESLintPlugin = require('eslint-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: '/src/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
-    clean: true,
+    clean: true
   },
   mode: 'development',
   devServer: {
@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["css-loader"],
+        use: ['css-loader']
       }
     ]
   },
@@ -53,5 +53,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
-  ],
-};
+  ]
+}

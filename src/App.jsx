@@ -13,20 +13,24 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <Header />
         <Route exact path="/">
-          <Components />
+          <Header />
+          <Main />
         </Route>
         <Route path="/main">
+          <Header />
           <Main />
         </Route>
         <Route path="/player">
+          <Header />
           <MusicPlayer />
         </Route>
         <Route path="/events">
+          <Header />
           <Events />
         </Route>
         <Route path="/components">
+          <Header />
           <Components />
         </Route>
       </Router>
