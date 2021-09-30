@@ -8,6 +8,11 @@ export const EventsStyle = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  & > p {
+    color: #cecece;
+    font-size: 24px;
+  }
 `
 
 export const EventsGrid = styled.div`

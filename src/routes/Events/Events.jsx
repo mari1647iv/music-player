@@ -8,29 +8,47 @@ import EventsSearch from '../../components/EventsSearch/EventsSearch'
 function Events() {
   const [events, setEvents] = useState(undefined)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(undefined)
 
   async function searchEvents({ artist, from, to }) {
-    let data = [{}]
+    setEvents(undefined)
     setLoading(true)
+    setError(undefined)
 
-    data = await eventsService.getEvents(artist, from, to)
-    console.log(data)
-    setTimeout(() => {
-      setEvents(data.resultsPage.results.event)
-      setLoading(false)
-    }, 1000)
+    try {
+      let resp = await eventsService.getEvents(artist, from, to)
+      console.log(resp)
+      setTimeout(() => {
+        if (resp.status === 200) {
+          let data = resp.data.resultsPage.results.event
+          if (data) {
+            setEvents(data)
+          } else {
+            setError('Sorry! No results found.')
+          }
+        } else {
+          setError(resp.status)
+        }
+      }, 1000)
+    } catch (e) {
+      setTimeout(() => {
+        setError('Something went wrong')
+      }, 1000)
+    }
+    setLoading(false)
   }
 
   return (
     <EventsStyle>
       <EventsSearch onSubmit={searchEvents} isDisabled={loading} />
-      {loading && (
+      {loading && !error && (
         <Loading>
           <div></div>
           <div></div>
         </Loading>
       )}
-      {!!events && !loading && (
+      {!!error && <p>{error}</p>}
+      {!!events && !loading && !error && (
         <EventsGrid>
           {events.map((event) => (
             <Card

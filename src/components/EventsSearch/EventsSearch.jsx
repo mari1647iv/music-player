@@ -1,12 +1,10 @@
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import { SearchForm } from '../Form/Form.styles'
+import Form from '../Form/Form'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
-import { useForm } from 'react-hook-form'
 
 /**
- * Encapsulates logic of context from react-hook-form
  * @param onSubmit
  * @param isDisabled
  * @returns {JSX.Element}
@@ -14,24 +12,18 @@ import { useForm } from 'react-hook-form'
  */
 function EventsSearch(props) {
   const { onSubmit, isDisabled } = props
-  const { register, handleSubmit } = useForm({ artist: '', from: '', to: '' })
 
   return (
-    <SearchForm
-      onSubmit={handleSubmit((data) => {
-        console.log(data)
-        onSubmit(data)
-      })}
-    >
-      <Input type="events" registerFunction={register('artist', { required: true })} />
+    <Form onSubmit={onSubmit} defaultValues={{ artist: '', from: '', to: '' }}>
+      <Input type="events" name="artist" rules={{ required: { message: 'Artist is required!', value: true } }} />
       <div>
-        <Input type="date" registerFunction={register('from')} />
-        <Input type="date" registerFunction={register('to')} />
+        <Input type="date" name="from" />
+        <Input type="date" name="to" />
         <Button isColorfull={true} isDisabled={isDisabled} type="submit">
           Search
         </Button>
       </div>
-    </SearchForm>
+    </Form>
   )
 }
 
