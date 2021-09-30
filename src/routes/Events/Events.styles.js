@@ -10,33 +10,47 @@ export const EventsStyle = styled.div`
   align-items: center;
 `
 
-export const SearchForm = styled.div`
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 40px;
-  margin-bottom: 40px;
-
-  & > div {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10%;
-    flex-wrap: wrap;
-  }
-
-  & > div > div {
-    flex-grow: 2;
-    margin-bottom: 40px;
-  }
-`
-
 export const EventsGrid = styled.div`
   width: 80vw;
   display: flex;
-  margin-top: 50px;
-  gap: 4em;
   justify-content: space-between;
+  align-items: stretch;
+  margin-top: 50px;
+  gap: 2em;
   flex-wrap: wrap;
+`
+
+export const Loading = styled.div`
+  position: relative;
+  width: 80px;
+  height: 80px;
+
+  div {
+    position: absolute;
+    border: 4px solid #cecece;
+    opacity: 1;
+    border-radius: 50%;
+    animation: loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+
+  div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+
+  @keyframes loading {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
+    }
+  }
 `

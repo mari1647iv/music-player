@@ -80,7 +80,7 @@ export const ArtistCardStyle = styled.div`
 `
 
 export const EventCardStyle = styled.div`
-  width: 346px;
+  width: 330px;
 
   background: #343434;
   border: 1px solid #515151;
@@ -95,6 +95,7 @@ export const EventCardStyle = styled.div`
     width: 100%;
     height: 200px;
     object-fit: cover;
+    filter: grayscale(70%);
   }
 
   div {

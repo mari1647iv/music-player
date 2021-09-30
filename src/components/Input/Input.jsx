@@ -4,7 +4,7 @@ import { InputStyle } from './Input.styles'
 import { Search, Calendar } from 'react-feather'
 
 function Input(props) {
-  const { type } = props
+  const { type, registerFunction } = props
   let icon
   let placeholder = 'Type Some Text'
 
@@ -19,7 +19,12 @@ function Input(props) {
   return (
     <InputStyle>
       <i className="input-icon">{icon}</i>
-      <input type={type === 'date' ? 'date' : 'text'} className="input-box" placeholder={placeholder} />
+      <input
+        type={type === 'date' ? 'date' : 'text'}
+        className="input-box"
+        placeholder={placeholder}
+        {...registerFunction}
+      />
     </InputStyle>
   )
 }
