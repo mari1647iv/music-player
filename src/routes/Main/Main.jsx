@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root'
-import React /*, { useState } */ from 'react'
+import React from 'react'
 import { MainStyle, MainBody } from './Main.styles'
 import Form from '../../components/Form/Form'
 import Input from '../../components/Input/Input'
@@ -10,9 +10,6 @@ import WreckedImage from '../../assets/wrecked.jpg'
 import LFTGImage from '../../assets/lftg.jpg'
 
 function Main() {
-  /* const [songPlaying, setSongPlaying] = useState(undefined)
-  const [playlist, setPlaylist] = useState([{}]) */
-
   return (
     <MainStyle>
       <MainBody>
