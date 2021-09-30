@@ -71,7 +71,7 @@ function Player(props) {
                 />
                 <div>
                   <span>{formatTime(current)}</span>
-                  <span className="song-duration">{audio.duration ? formatTime(audio.duration) : ''}</span>
+                  <span className="song-duration">{!!audio.duration && formatTime(audio.duration)}</span>
                 </div>
               </>
             ) : (

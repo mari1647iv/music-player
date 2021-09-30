@@ -19,9 +19,7 @@ class EventsService {
       params: { apikey: this.API_KEY, artist_name: artist, min_date: from, max_date: to }
     })
 
-    const data = response
-
-    return data
+    return response
   }
 }
 

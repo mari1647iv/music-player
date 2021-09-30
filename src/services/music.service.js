@@ -10,7 +10,7 @@ class MusicService {
   async getSonById(id) {
     const response = {}
 
-    return response
+    return response.data
   }
 }
 
