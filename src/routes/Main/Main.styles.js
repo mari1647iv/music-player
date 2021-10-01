@@ -17,7 +17,7 @@ export const MainBody = styled.div`
   width: 80vw;
 `
 
-export const SearchForm = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;

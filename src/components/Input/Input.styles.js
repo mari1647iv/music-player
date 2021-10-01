@@ -3,6 +3,14 @@ import styled from 'styled-components'
 export const InputStyle = styled.div`
   position: relative;
 
+  p {
+    width: 100%;
+    margin-top: 10px;
+    text-align: right;
+    color: #cecece;
+    font-size: 16px;
+  }
+
   input {
     width: 100%;
     height: 60px;

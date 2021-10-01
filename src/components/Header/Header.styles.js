@@ -23,6 +23,12 @@ export const LogoStyle = styled.img`
   left: -moz-calc(50% - 25px);
   left: -o-calc(50% - 25px);
   left: calc(50% - 25px);
+
+  @media screen and (max-width: 1000px) {
+    & {
+      display: none;
+    }
+  }
 `
 
 export const TitleContainer = styled.div`

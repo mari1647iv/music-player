@@ -41,6 +41,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['css-loader']
+      },
+      {
+        test: /\.mp3$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -51,6 +55,7 @@ module.exports = {
     }),
     new ESLintPlugin(),
     new HtmlWebpackPlugin({
+      favicon: './src/assets/logo.svg',
       template: './src/index.html'
     })
   ]

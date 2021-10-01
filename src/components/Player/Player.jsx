@@ -5,18 +5,53 @@ import { Play, SkipBack, SkipForward, Repeat, Share2, Pause } from 'react-feathe
 import DefaultImage from '../../assets/default.svg'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
+import mp3 from '../../assets/playlist/song.mp3'
 
 function Player(props) {
-  const { size, song, artist, image, duration } = props
+  const { size, song, artist, image } = props
   const [isPlaying, setIsPlaying] = useState(false)
+  const [audio, setAudio] = useState(new Audio(mp3))
+  const [current, setCurrent] = useState(0)
 
-  let current_time = '2:37'
-  let progress =
-    (100 * (Number(current_time.split(':')[0]) * 60 + Number(current_time.split(':')[1]))) /
-    (Number(duration.split(':')[0]) * 60 + Number(duration.split(':')[1]))
+  const progressBar = React.createRef()
+
+  function formatTime(time) {
+    let min = Math.floor(time / 60)
+    let sec = Math.floor(time % 60)
+    if (sec < 10) {
+      sec = `0${sec}`
+    }
+    return `${min} : ${sec}`
+  }
+
+  let updateInterval
+
+  function update() {
+    updateInterval = setInterval(() => {
+      setCurrent(audio.currentTime)
+    }, 1000)
+  }
+
+  update()
 
   function playPause() {
+    if (isPlaying) {
+      audio.pause()
+      clearInterval(updateInterval)
+    } else {
+      update()
+      audio.play()
+    }
     setIsPlaying(!isPlaying)
+  }
+
+  function handleAudioNavigation() {
+    audio.currentTime = progressBar.current.value
+    setCurrent(audio.currentTime)
+  }
+
+  function switchToPrev() {
+    setAudio(new Audio(mp3))
   }
 
   switch (size) {
@@ -24,11 +59,24 @@ function Player(props) {
       return (
         <MinimizedPlayer>
           <Slider>
-            <input type="range" defaultValue={progress} />
-            <div>
-              <span>{current_time}</span>
-              <span className="song-duration">{duration}</span>
-            </div>
+            {audio.duration ? (
+              <>
+                <input
+                  type="range"
+                  ref={progressBar}
+                  value={current}
+                  min="0"
+                  max={audio.duration}
+                  onChange={handleAudioNavigation}
+                />
+                <div>
+                  <span>{formatTime(current)}</span>
+                  <span className="song-duration">{!!audio.duration && formatTime(audio.duration)}</span>
+                </div>
+              </>
+            ) : (
+              ''
+            )}
           </Slider>
           <div>
             <Container>
@@ -77,7 +125,7 @@ function Player(props) {
             <div className="buttons">
               <div className="controls">
                 <Button type="icon">
-                  <SkipBack size={44} />
+                  <SkipBack size={44} onClick={switchToPrev} />
                 </Button>
                 <Button id="playButton" type="icon" onClick={playPause}>
                   {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
@@ -99,9 +147,9 @@ function Player(props) {
               </Container>
             </div>
             <Slider>
-              <input type="range" defaultValue={progress} />
-              <span>{current_time}</span>
-              <span className="song-duration">{duration}</span>
+              <input type="range" defaultValue={(100 * audio.currentTime) / audio.duration} />
+              <span>{formatTime(audio.currentTime)}</span>
+              <span className="song-duration">{formatTime(audio.duration)}</span>
             </Slider>
           </div>
         </MaximizedPlayer>

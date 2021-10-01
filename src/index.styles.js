@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    width: 100vw;
     background-color: #2f2f2f;
     color: #cecece;
     text-align: center;
