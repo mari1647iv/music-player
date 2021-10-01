@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root'
 import React, { useState } from 'react'
 import { EventsStyle, EventsGrid, Loading } from './Events.styles'
 import Card from '../../components/Card/Card'
-import eventsService from '../../services/events.service'
+import eventsService from '../../services/eventsService'
 import EventsSearch from '../../components/EventsSearch/EventsSearch'
 
 function Events() {
