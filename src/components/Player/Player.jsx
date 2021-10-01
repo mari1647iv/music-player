@@ -2,17 +2,15 @@ import { hot } from 'react-hot-loader/root'
 import React, { useState } from 'react'
 import { MinimizedPlayer, MaximizedPlayer, Slider, Container, Info } from './Player.styles.js'
 import { Play, SkipBack, SkipForward, Repeat, Share2, Pause } from 'react-feather'
-import DefaultImage from '../../assets/default.svg'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
-import mp3 from '../../assets/playlist/song.mp3'
 
 function Player(props) {
-  const { size, song, artist, image } = props
+  const { size, song, artist, image, duration } = props
+  const path = `assets/playlist/${artist}-${song}.mp3`.replace(/\s/g, '')
   const [isPlaying, setIsPlaying] = useState(false)
-  const [audio, setAudio] = useState(new Audio(mp3))
+  let audio = new Audio(path)
   const [current, setCurrent] = useState(0)
-
   const progressBar = React.createRef()
 
   function formatTime(time) {
@@ -24,17 +22,16 @@ function Player(props) {
     return `${min} : ${sec}`
   }
 
-  let updateInterval
-
   function update() {
-    updateInterval = setInterval(() => {
-      setCurrent(audio.currentTime)
-    }, 1000)
+    setCurrent(audio.currentTime)
   }
 
-  update()
+  let updateInterval = setInterval(() => {
+    update()
+  }, 1000)
 
   function playPause() {
+    setIsPlaying(!isPlaying)
     if (isPlaying) {
       audio.pause()
       clearInterval(updateInterval)
@@ -42,7 +39,6 @@ function Player(props) {
       update()
       audio.play()
     }
-    setIsPlaying(!isPlaying)
   }
 
   function handleAudioNavigation() {
@@ -51,7 +47,7 @@ function Player(props) {
   }
 
   function switchToPrev() {
-    setAudio(new Audio(mp3))
+    audio = new Audio(path)
   }
 
   switch (size) {
@@ -59,8 +55,8 @@ function Player(props) {
       return (
         <MinimizedPlayer>
           <Slider>
-            {audio.duration ? (
-              <>
+            <>
+              {!!audio.duration && (
                 <input
                   type="range"
                   ref={progressBar}
@@ -69,25 +65,25 @@ function Player(props) {
                   max={audio.duration}
                   onChange={handleAudioNavigation}
                 />
-                <div>
-                  <span>{formatTime(current)}</span>
-                  <span className="song-duration">{!!audio.duration && formatTime(audio.duration)}</span>
-                </div>
-              </>
-            ) : (
-              ''
-            )}
+              )}
+              <div>
+                <span>{formatTime(current)}</span>
+                <span className="song-duration">
+                  {audio.duration ? formatTime(audio.duration) : duration.replace(':', ' : ')}
+                </span>
+              </div>
+            </>
           </Slider>
           <div>
-            <Container>
-              <img src={image ? image : DefaultImage} alt="Song album" />
+            <Container className="container-grow">
+              <img src={image ? image : 'assets/default.svg'} alt="Song album" />
               <Link to="/player">
                 <Info className="player-info">
                   <p>{song}</p>
                   <p>{artist}</p>
                 </Info>
               </Link>
-              <div>
+              <div className="controls">
                 <Button type="icon">
                   <SkipBack size={44} />
                 </Button>
@@ -116,7 +112,7 @@ function Player(props) {
     case 'maximized':
       return (
         <MaximizedPlayer>
-          <img src={image ? image : DefaultImage} alt="Song album" />
+          <img src={image ? image : 'assets/default.svg'} alt="Song album" />
           <div className="player-container">
             <Info className="player-info">
               <p>{song}</p>

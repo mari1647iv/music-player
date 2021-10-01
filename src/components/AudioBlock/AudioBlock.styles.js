@@ -10,13 +10,13 @@ export const AudioBlockStyle = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: no-wrap;
+  gap: 28px;
 
   img {
     width: 60px;
     height: 60px;
-    margin-right: 28px;
     border-radius: 8.5%;
   }
 
@@ -27,6 +27,18 @@ export const AudioBlockStyle = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     flex-grow: 2;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  div::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(90deg, transparent 86.79%, #3c3c3c 99.89%);
   }
 
   .song {
@@ -37,6 +49,7 @@ export const AudioBlockStyle = styled.div`
 
     color: #cecece;
     text-align: left;
+    white-space: nowrap;
   }
 
   .artist {
@@ -50,7 +63,7 @@ export const AudioBlockStyle = styled.div`
   }
 
   .time {
-    margin: 0px 40px;
+    margin: 0px;
 
     font-style: normal;
     font-weight: 300;

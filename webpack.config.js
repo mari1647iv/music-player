@@ -1,13 +1,14 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: '/src/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
-    clean: true
+    clean: true,
   },
   mode: 'development',
   devServer: {
@@ -22,6 +23,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   resolve: {
+    alias: { 'react-dom': '@hot-loader/react-dom'  },
     extensions: ['.js', '.jsx']
   },
   module: {
@@ -55,8 +57,14 @@ module.exports = {
     }),
     new ESLintPlugin(),
     new HtmlWebpackPlugin({
-      favicon: './src/assets/logo.svg',
-      template: './src/index.html'
+      favicon: 'src/assets/logo.svg',
+      template: '/src/index.html'
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets', to: 'assets' },
+        { from: 'src/assets/playlist', to: 'assets/playlist' }
+      ]
     })
   ]
 }

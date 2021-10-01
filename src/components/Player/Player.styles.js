@@ -26,7 +26,7 @@ export const MinimizedPlayer = styled.div`
   }
 
   .player-info {
-    min-width: 351px;
+    min-width: 350px;
   }
 
   & > div:nth-child(2) {
@@ -39,6 +39,11 @@ export const MinimizedPlayer = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-wrap: no-wrap;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: nowrap;
   }
 `
 
@@ -176,6 +181,9 @@ export const Info = styled.div`
   font-style: normal;
   text-align: left;
   text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
 
   p:first-child {
     font-weight: bold;
@@ -191,5 +199,15 @@ export const Info = styled.div`
     line-height: 30px;
 
     color: #727272;
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(90deg, transparent 86.79%, #1e1e1e 99.89%);
   }
 `
