@@ -5,11 +5,14 @@ import Button from '../../components/Button/Button'
 import AudioBlock from '../../components/AudioBlock/AudioBlock'
 import Player from '../../components/Player/Player'
 import musicService from '../../services/musicService'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSong } from '../../store/features/player/playerSlice'
 
 function Main() {
   const [playlist, setPlaylist] = useState(undefined)
   const [loading, setLoading] = useState(true)
-  const [songPlaying, setSongPlaying] = useState(undefined)
+  const songPlaying = useSelector((state) => state.player.current)
+  const dispatch = useDispatch()
 
   async function getMusic() {
     let data = await musicService.getSongs()
@@ -19,14 +22,15 @@ function Main() {
 
   async function songChoice() {
     let id = document.querySelector('input[name="playlist"]:checked').value
-    let resp = await musicService.getSonById(id)
-    setSongPlaying(resp)
+    dispatch(setSong(id))
   }
 
   return (
     <MainStyle>
       <MainBody>
-        <Button onClick={getMusic}>Load Music</Button>
+        <Button onClick={getMusic} style={{ border: '1px solid #cecece' }}>
+          Load Music
+        </Button>
         {!!playlist && !loading && (
           <form onChange={songChoice}>
             {playlist.map((song) => (
@@ -35,9 +39,7 @@ function Main() {
           </form>
         )}
       </MainBody>
-      {!!songPlaying && (
-        <Player size="minimized" song={songPlaying.name} artist={songPlaying.artist} duration={songPlaying.duration} />
-      )}
+      {!!songPlaying && <Player size="minimized" />}
     </MainStyle>
   )
 }

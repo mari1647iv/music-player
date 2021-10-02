@@ -3,9 +3,15 @@ import React from 'react'
 import { ButtonStyles } from './Button.styles'
 
 function Button(props) {
-  const { isColorfull, children, isDisabled, onClick, type } = props
+  const { isColorfull, children, isDisabled, onClick, type, ...rest } = props
   return (
-    <ButtonStyles isColorfull={isColorfull} disabled={isDisabled} onClick={onClick} type={type ? type : 'button'}>
+    <ButtonStyles
+      isColorfull={isColorfull}
+      disabled={isDisabled}
+      onClick={onClick}
+      type={type ? type : 'button'}
+      {...rest}
+    >
       {' '}
       {children}{' '}
     </ButtonStyles>

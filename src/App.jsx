@@ -7,10 +7,12 @@ import Main from './routes/Main/Main'
 import MusicPlayer from './routes/MusicPlayer/MusicPlayer'
 import Events from './routes/Events/Events'
 import Components from './routes/Components/Components'
+import { store } from './store/store'
+import { Provider } from 'react-redux'
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <Router>
         <Route exact path="/">
@@ -34,7 +36,7 @@ function App() {
           <Components />
         </Route>
       </Router>
-    </>
+    </Provider>
   )
 }
 
