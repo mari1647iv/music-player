@@ -22,10 +22,10 @@ function Player(props) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [current, setCurrent] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [audio, setAudio] = useState(undefined)
 
   const progressBar = React.createRef()
   let path
-  let audio = new Audio(path)
   const [currentSong, setCurrentSong] = useState(undefined)
   let id = useSelector((state) => state.player.current)
   const dispatch = useDispatch()
@@ -34,9 +34,10 @@ function Player(props) {
     setLoading(true)
     const resp = await musicService.getSonById(id)
     path = `assets/playlist/${resp.artist}-${resp.name}.mp3`.replace(/\s/g, '')
-    audio = new Audio(path)
-    setLoading(false)
+    setAudio(new Audio(path))
+    setCurrent(0)
     setCurrentSong(resp)
+    setLoading(false)
   }, [id])
 
   function update() {
@@ -59,7 +60,6 @@ function Player(props) {
   }
 
   function handleAudioNavigation() {
-    audio.currentTime = progressBar.current.value
     setCurrent(audio.currentTime)
   }
 
@@ -83,7 +83,7 @@ function Player(props) {
                     <input
                       type="range"
                       ref={progressBar}
-                      value={current}
+                      value={audio.currentTime}
                       min="0"
                       max={audio.duration}
                       onChange={handleAudioNavigation}
@@ -91,7 +91,7 @@ function Player(props) {
                   )}
                   <div>
                     <span>{formatTime(current)}</span>
-                    <span className="song-duration">{formatTime(audio.duration)}</span>
+                    <span className="song-duration">{currentSong.duration.replace(':', ' : ')}</span>
                   </div>
                 </>
               </Slider>
@@ -135,42 +135,57 @@ function Player(props) {
     case 'maximized':
       return (
         <MaximizedPlayer>
-          <img src={image ? image : 'assets/default.svg'} alt="Song album" />
-          <div className="player-container">
-            <Info className="player-info">
-              <p>{currentSong.name}</p>
-              <p>{currentSong.artist}</p>
-            </Info>
-            <div className="buttons">
-              <div className="controls">
-                <Button type="icon">
-                  <SkipBack size={44} onClick={switchToPrev} />
-                </Button>
-                <Button id="playButton" type="icon" onClick={playPause}>
-                  {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
-                </Button>
-                <Button type="icon" onClick={switchToNext}>
-                  <SkipForward size={44} />
-                </Button>
+          {!!currentSong && !loading && (
+            <>
+              <img src={image ? image : 'assets/default.svg'} alt="Song album" />
+              <div className="player-container">
+                <Info className="player-info">
+                  <p>{currentSong.name}</p>
+                  <p>{currentSong.artist}</p>
+                </Info>
+                <div className="buttons">
+                  <div className="controls">
+                    <Button type="icon">
+                      <SkipBack size={44} onClick={switchToPrev} />
+                    </Button>
+                    <Button id="playButton" type="icon" onClick={playPause}>
+                      {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
+                    </Button>
+                    <Button type="icon" onClick={switchToNext}>
+                      <SkipForward size={44} />
+                    </Button>
+                  </div>
+                  <Container>
+                    <label>
+                      <input type="checkbox" />
+                      <i>
+                        <Repeat size={30} />
+                      </i>
+                    </label>
+                    <Button type="icon">
+                      <Share2 size={30} />
+                    </Button>
+                  </Container>
+                </div>
+                <Slider>
+                  <>
+                    {!!audio.duration && (
+                      <input
+                        type="range"
+                        ref={progressBar}
+                        value={audio.currentTime}
+                        min="0"
+                        max={audio.duration}
+                        onChange={handleAudioNavigation}
+                      />
+                    )}
+                    <span>{formatTime(current)}</span>
+                    <span className="song-duration">{currentSong.duration.replace(':', ' : ')}</span>
+                  </>
+                </Slider>
               </div>
-              <Container>
-                <label>
-                  <input type="checkbox" />
-                  <i>
-                    <Repeat size={30} />
-                  </i>
-                </label>
-                <Button type="icon">
-                  <Share2 size={30} />
-                </Button>
-              </Container>
-            </div>
-            <Slider>
-              <input type="range" defaultValue={(100 * audio.currentTime) / audio.duration} />
-              <span>{formatTime(audio.currentTime)}</span>
-              <span className="song-duration">{formatTime(audio.duration)}</span>
-            </Slider>
-          </div>
+            </>
+          )}
         </MaximizedPlayer>
       )
     default:
