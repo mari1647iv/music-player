@@ -51,11 +51,9 @@ class MusicService {
   }
 
   async getSonById(id) {
-    const response = this.PLAYLIST.find((element) => {
+    return this.PLAYLIST.find((element) => {
       return element.id == id
     })
-
-    return response
   }
 }
 
