@@ -6,6 +6,7 @@ import { Play } from 'react-feather'
 import Input from '../../components/Input/Input'
 import AudioBlock from '../../components/AudioBlock/AudioBlock'
 import Card from '../../components/Card/Card'
+import Form from '../../components/Form/Form'
 import LyricsBlock from '../../components/LyricsBlock/LyricsBlock'
 import Player from '../../components/Player/Player'
 import WreckedImage from '../../assets/wrecked.jpg'
@@ -79,12 +80,12 @@ function Components() {
             <AudioBlock song="And.. Just kidding)" artist="Same old strange artist" duration="4:20" />
           </div>
         </PlaylistStyle>
-        <div>
+        <Form>
           <Input type="music" />
           <Input type="events" />
           <Input type="date" />
           <Input type="blablabla" />
-        </div>
+        </Form>
         <div>
           <Player size="maximized" song="Here's some song" artist="Some strange artist" duration="3:40" />
         </div>

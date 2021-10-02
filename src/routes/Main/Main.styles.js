@@ -15,16 +15,8 @@ export const MainBody = styled.div`
   flex-direction: column;
   align-items: stretch;
   width: 80vw;
-`
 
-export const SearchForm = styled.form`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 40px;
-
-  & > div {
-    flex-grow: 2;
+  button {
+    margin-bottom: 60px;
   }
 `

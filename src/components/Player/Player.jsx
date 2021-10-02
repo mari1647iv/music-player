@@ -1,48 +1,61 @@
 import { hot } from 'react-hot-loader/root'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MinimizedPlayer, MaximizedPlayer, Slider, Container, Info } from './Player.styles.js'
 import { Play, SkipBack, SkipForward, Repeat, Share2, Pause } from 'react-feather'
-import DefaultImage from '../../assets/default.svg'
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
-import mp3 from '../../assets/playlist/song.mp3'
+import { useSelector, useDispatch } from 'react-redux'
+import { next, previous } from '../../store/features/player/playerSlice'
+import musicService from '../../services/musicService.js'
+
+function formatTime(time) {
+  let min = Math.floor(time / 60)
+  let sec = Math.floor(time % 60)
+  if (sec < 10) {
+    sec = `0${sec}`
+  }
+  return `${min} : ${sec}`
+}
 
 function Player(props) {
-  const { size, song, artist, image } = props
+  const { size, image } = props
   const [isPlaying, setIsPlaying] = useState(false)
-  const [audio, setAudio] = useState(new Audio(mp3))
   const [current, setCurrent] = useState(0)
+  const [loading, setLoading] = useState(true)
 
   const progressBar = React.createRef()
+  let path
+  let audio = new Audio(path)
+  const [currentSong, setCurrentSong] = useState(undefined)
+  let id = useSelector((state) => state.player.current)
+  const dispatch = useDispatch()
 
-  function formatTime(time) {
-    let min = Math.floor(time / 60)
-    let sec = Math.floor(time % 60)
-    if (sec < 10) {
-      sec = `0${sec}`
-    }
-    return `${min} : ${sec}`
+  useEffect(async () => {
+    setLoading(true)
+    const resp = await musicService.getSonById(id)
+    path = `assets/playlist/${resp.artist}-${resp.name}.mp3`.replace(/\s/g, '')
+    audio = new Audio(path)
+    setLoading(false)
+    setCurrentSong(resp)
+  }, [id])
+
+  function update() {
+    setCurrent(audio.currentTime)
   }
 
   let updateInterval
 
-  function update() {
-    updateInterval = setInterval(() => {
-      setCurrent(audio.currentTime)
-    }, 1000)
-  }
-
-  update()
-
   function playPause() {
+    setIsPlaying(!isPlaying)
     if (isPlaying) {
       audio.pause()
       clearInterval(updateInterval)
     } else {
-      update()
+      updateInterval = setInterval(() => {
+        update()
+      }, 1000)
       audio.play()
     }
-    setIsPlaying(!isPlaying)
   }
 
   function handleAudioNavigation() {
@@ -51,76 +64,82 @@ function Player(props) {
   }
 
   function switchToPrev() {
-    setAudio(new Audio(mp3))
+    dispatch(previous())
+  }
+
+  function switchToNext() {
+    dispatch(next())
   }
 
   switch (size) {
     case 'minimized':
       return (
         <MinimizedPlayer>
-          <Slider>
-            {audio.duration ? (
-              <>
-                <input
-                  type="range"
-                  ref={progressBar}
-                  value={current}
-                  min="0"
-                  max={audio.duration}
-                  onChange={handleAudioNavigation}
-                />
-                <div>
-                  <span>{formatTime(current)}</span>
-                  <span className="song-duration">{!!audio.duration && formatTime(audio.duration)}</span>
-                </div>
-              </>
-            ) : (
-              ''
-            )}
-          </Slider>
-          <div>
-            <Container>
-              <img src={image ? image : DefaultImage} alt="Song album" />
-              <Link to="/player">
-                <Info className="player-info">
-                  <p>{song}</p>
-                  <p>{artist}</p>
-                </Info>
-              </Link>
+          {!!currentSong && !loading && (
+            <>
+              <Slider>
+                <>
+                  {!!audio.duration && (
+                    <input
+                      type="range"
+                      ref={progressBar}
+                      value={current}
+                      min="0"
+                      max={audio.duration}
+                      onChange={handleAudioNavigation}
+                    />
+                  )}
+                  <div>
+                    <span>{formatTime(current)}</span>
+                    <span className="song-duration">{formatTime(audio.duration)}</span>
+                  </div>
+                </>
+              </Slider>
               <div>
-                <Button type="icon">
-                  <SkipBack size={44} />
-                </Button>
-                <Button type="icon" onClick={playPause}>
-                  {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
-                </Button>
-                <Button type="icon">
-                  <SkipForward size={44} />
-                </Button>
+                <Container className="container-grow">
+                  <img src={image ? image : 'assets/default.svg'} alt="Song album" />
+                  <Link to="/player">
+                    <Info className="player-info">
+                      <p>{currentSong.name}</p>
+                      <p>{currentSong.artist}</p>
+                    </Info>
+                  </Link>
+                  <div className="controls">
+                    <Button type="icon" onClick={switchToPrev}>
+                      <SkipBack size={44} />
+                    </Button>
+                    <Button type="icon" onClick={playPause}>
+                      {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
+                    </Button>
+                    <Button type="icon" onClick={switchToNext}>
+                      <SkipForward size={44} />
+                    </Button>
+                  </div>
+                </Container>
+                <Container>
+                  <label>
+                    <input type="checkbox" />
+                    <i>
+                      <Repeat size={30} />
+                    </i>
+                  </label>
+                  <Button type="icon">
+                    <Share2 size={30} />
+                  </Button>
+                </Container>
               </div>
-            </Container>
-            <Container>
-              <label>
-                <input type="checkbox" />
-                <i>
-                  <Repeat size={30} />
-                </i>
-              </label>
-              <Button type="icon">
-                <Share2 size={30} />
-              </Button>
-            </Container>
-          </div>
+            </>
+          )}
         </MinimizedPlayer>
       )
     case 'maximized':
       return (
         <MaximizedPlayer>
-          <img src={image ? image : DefaultImage} alt="Song album" />
+          <img src={image ? image : 'assets/default.svg'} alt="Song album" />
           <div className="player-container">
             <Info className="player-info">
-              <p>{song}</p>
-              <p>{artist}</p>
+              <p>{currentSong.name}</p>
+              <p>{currentSong.artist}</p>
             </Info>
             <div className="buttons">
               <div className="controls">
@@ -130,7 +149,7 @@ function Player(props) {
                 <Button id="playButton" type="icon" onClick={playPause}>
                   {isPlaying ? <Pause size={44} strokeWidth="1.8px" /> : <Play size={44} />}
                 </Button>
-                <Button type="icon">
+                <Button type="icon" onClick={switchToNext}>
                   <SkipForward size={44} />
                 </Button>
               </div>
