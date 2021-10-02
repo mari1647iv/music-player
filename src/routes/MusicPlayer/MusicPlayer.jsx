@@ -1,12 +1,28 @@
 import { hot } from 'react-hot-loader/root'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { MusicPlayerStyle, MusicBody } from './MusicPlayer.styles'
 
 import Card from '../../components/Card/Card'
 import Player from '../../components/Player/Player'
 import LyricsBlock from '../../components/LyricsBlock/LyricsBlock'
+import artistService from '../../services/artistService'
 
 function MusicPlayer() {
+  const [artistInfo, setArtistInfo] = useState(undefined)
+  // async function searchArtist(artist) {
+  //   const result = await artistService.getArtist(artist)
+  //   return result
+  // }
+  const [loading, setLoading] = useState(false)
+
+  useEffect(async () => {
+    setLoading(true)
+    const resp = await artistService.getArtist('Ed Sheeran')
+    setArtistInfo(resp)
+    console.log(artistInfo)
+    setLoading(false)
+  }, [])
+
   return (
     <MusicPlayerStyle>
       <MusicBody>
@@ -42,13 +58,9 @@ function MusicPlayer() {
           }
         />
       </MusicBody>
-      <Card
-        type="artist"
-        artist="Jason Mraz"
-        description="Lorem Ipsum. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
-        youtubeLink="https://www.youtube.com/"
-        wikiLink="https://wiki.com/"
-      />
+      {!!artistInfo && !loading && (
+        <Card type="artist" artist="aaaaa" description="bbbbb" youtubeLink="cccccc" wikiLink="dddddd" />
+      )}
     </MusicPlayerStyle>
   )
 }
