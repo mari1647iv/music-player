@@ -9,10 +9,6 @@ import artistService from '../../services/artistService'
 
 function MusicPlayer() {
   const [artistInfo, setArtistInfo] = useState(undefined)
-  // async function searchArtist(artist) {
-  //   const result = await artistService.getArtist(artist)
-  //   return result
-  // }
   const [loading, setLoading] = useState(false)
 
   useEffect(async () => {
