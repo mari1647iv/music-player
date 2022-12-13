@@ -6,18 +6,22 @@ import Card from '../../components/Card/Card'
 import Player from '../../components/Player/Player'
 import LyricsBlock from '../../components/LyricsBlock/LyricsBlock'
 import artistService from '../../services/artistService'
+import musicService from '../../services/musicService'
+import { useSelector } from 'react-redux'
 
 function MusicPlayer() {
   const [artistInfo, setArtistInfo] = useState(undefined)
   const [loading, setLoading] = useState(false)
+  let id = useSelector((state) => state.player.current)
 
   useEffect(async () => {
     setLoading(true)
-    const resp = await artistService.getArtist('Ed Sheeran')
+    const data = await musicService.getSonById(id)
+    const resp = await artistService.getArtist(data.artist)
     setArtistInfo(resp)
     console.log(artistInfo)
     setLoading(false)
-  }, [])
+  }, [id])
 
   return (
     <MusicPlayerStyle>
