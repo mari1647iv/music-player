@@ -104,7 +104,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[workflow-shield]: https://img.shields.io/github/workflow/status/mari1647iv/music-player/Node.js%20CI?style=for-the-badge
+[workflow-shield]: https://img.shields.io/github/actions/workflow/status/mari1647iv/music-player/node.js.yml?branch=main&style=for-the-badge
 [workflow-url]: https://github.com/mari1647iv/music-player/actions/workflows/node.js.yml
 [contributors-shield]: https://img.shields.io/github/contributors/mari1647iv/music-player.svg?style=for-the-badge
 [contributors-url]: https://github.com/mari1647iv/music-player/graphs/contributors
