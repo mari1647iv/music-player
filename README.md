@@ -29,26 +29,25 @@
 
 ## About <a name = "about"></a>
 
-For more detailed feature description go to the https://docs.google.com/document/d/1enQtu05d_Va8euEKDsHXV75I_egNgr_5gt9eRKrfQuE/edit?usp=sharing
+Simple web music player with the ability to see the song lyrics, artist info, and information about upcoming music events.
+
+Features description & MVP: https://docs.google.com/document/d/1enQtu05d_Va8euEKDsHXV75I_egNgr_5gt9eRKrfQuE/edit?usp=sharing
 
 ### Frontend Description <a name = "frontend"></a>
 
-During the course project, we are planning to implement a simple web music player with some standard functionality, the ability to see the song lyrics, and artist info. As well the information about upcoming music events such as concerts and festivals could be found on the web service.
+During the course project, we have implemented a simple web music player with some standard functionality, the ability to see the song lyrics, and artist info. As well the information about upcoming music events such as concerts and festivals could be found on the web service.
 
-The application will contain 3 pages:
+The application contains 3 pages:
 
 - music list with the ability to search for desired music to listen
-- music player where the user will be able to navigate through the playing music stream, see the playing song’s lyrics and information about the artist
+- music player where the user is able to navigate through the playing music stream, see the playing song’s lyrics and information about the artist
 - upcoming events with events search form where the events could also be filtered by the desired artist
 
 ### Backend Description <a name = "backend"></a>
 
-For the backend, we are planning to use Public APIs.
+For the backend, we used Public APIs:
 
-Here is the list of possible options to be used:
-
-- MusicBrainz, AudioDB, or Deezer - music database
-- Genius or Lyrics.ovh - song lyrics database
+- Genius <!-- or Lyrics.ovh --> - song lyrics database
 - TasteDive - artists database
 - Songkick - music events database
 
