@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   isPlaying: false,
   current: 0,
+  currentInterval: undefined,
   maxId: 6
 }
 
@@ -11,18 +12,12 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     next: (state) => {
-      let id = Number(state.current) + 1
-      if (id > state.maxId) {
-        id = 0
-      }
+      let id = state.current < state.maxId ? Number(state.current) + 1 : 0
       state.current = String(id)
       state.isPlaying = false
     },
     previous: (state) => {
-      let id = Number(state.current) - 1
-      if (id < 0) {
-        id = state.maxId
-      }
+      let id = state.current > 0 ? Number(state.current) - 1 : state.maxId
       state.current = String(id)
       state.isPlaying = false
     },
@@ -36,14 +31,16 @@ export const playerSlice = createSlice({
       state.current = String(id)
       state.isPlaying = false
     },
-    play: (state) => {
+    play: (state, action) => {
       if (state.current) {
         state.isPlaying = true
+        state.currentInterval = action.payload
       }
     },
     pause: (state) => {
       if (state.current) {
         state.isPlaying = false
+        state.currentInterval = undefined
       }
     }
   }
