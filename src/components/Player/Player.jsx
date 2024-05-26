@@ -33,7 +33,7 @@ function Player(props) {
   useEffect(async () => {
     setLoading(true)
     const resp = await musicService.getSonById(id)
-    path = `assets/playlist/${resp.artist}-${resp.name}.mp3`.replace(/\s/g, '')
+    path = resp.url
     setAudio(new Audio(path))
     setCurrent(0)
     setCurrentSong(resp)

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isPlaying: false,
-  current: undefined,
+  current: 0,
   maxId: 6
 }
 
@@ -11,19 +11,19 @@ export const playerSlice = createSlice({
   initialState,
   reducers: {
     next: (state) => {
-      let id = state.current + 1
+      let id = Number(state.current) + 1
       if (id > state.maxId) {
         id = 0
       }
-      state.current = id
+      state.current = String(id)
       state.isPlaying = false
     },
     previous: (state) => {
-      let id = state.current - 1
+      let id = Number(state.current) - 1
       if (id < 0) {
         id = state.maxId
       }
-      state.current = id
+      state.current = String(id)
       state.isPlaying = false
     },
     setSong: (state, action) => {
@@ -33,7 +33,7 @@ export const playerSlice = createSlice({
       } else if (id < 0) {
         id = 0
       }
-      state.current = id
+      state.current = String(id)
       state.isPlaying = false
     },
     play: (state) => {
