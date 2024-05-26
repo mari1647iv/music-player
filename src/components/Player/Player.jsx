@@ -5,7 +5,7 @@ import { Play, SkipBack, SkipForward, Repeat, Share2, Pause } from 'react-feathe
 import { Link } from 'react-router-dom'
 import Button from '../Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
-import { next, previous } from '../../store/features/player/playerSlice'
+import { play, pause, next, previous } from '../../store/features/player/playerSlice'
 import musicService from '../../services/musicService.js'
 
 function formatTime(time) {
@@ -28,35 +28,49 @@ function Player(props) {
   let path
   const [currentSong, setCurrentSong] = useState(undefined)
   let id = useSelector((state) => state.player.current)
+  let updateInterval = useSelector((state) => state.player.currentInterval)
+
+  function update() {
+    setCurrent(audio.currentTime)
+  }
+
   const dispatch = useDispatch()
 
   useEffect(async () => {
     setLoading(true)
     const resp = await musicService.getSonById(id)
-    path = `assets/playlist/${resp.artist}-${resp.name}.mp3`.replace(/\s/g, '')
+    path = resp.url
     setAudio(new Audio(path))
     setCurrent(0)
     setCurrentSong(resp)
     setLoading(false)
   }, [id])
 
-  function update() {
-    setCurrent(audio.currentTime)
+  function playPause() {
+    if (isPlaying) {
+      playerPause()
+    } else {
+      playerPlay()
+    }
   }
 
-  let updateInterval
+  function playerPlay() {
+    setIsPlaying(true)
+    dispatch(
+      play(
+        setInterval(() => {
+          update()
+        }, 1000)
+      )
+    )
+    audio.play()
+  }
 
-  function playPause() {
-    setIsPlaying(!isPlaying)
-    if (isPlaying) {
-      audio.pause()
-      clearInterval(updateInterval)
-    } else {
-      updateInterval = setInterval(() => {
-        update()
-      }, 1000)
-      audio.play()
-    }
+  function playerPause() {
+    setIsPlaying(false)
+    audio.pause()
+    clearInterval(updateInterval)
+    dispatch(pause())
   }
 
   function handleAudioNavigation() {
@@ -64,10 +78,12 @@ function Player(props) {
   }
 
   function switchToPrev() {
+    playerPause()
     dispatch(previous())
   }
 
   function switchToNext() {
+    playerPause()
     dispatch(next())
   }
 

@@ -1,7 +1,6 @@
 import { hot } from 'react-hot-loader/root'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MainStyle, MainBody } from './Main.styles'
-import Button from '../../components/Button/Button'
 import AudioBlock from '../../components/AudioBlock/AudioBlock'
 import Player from '../../components/Player/Player'
 import musicService from '../../services/musicService'
@@ -14,11 +13,15 @@ function Main() {
   const songPlaying = useSelector((state) => state.player.current)
   const dispatch = useDispatch()
 
-  async function getMusic() {
-    let data = await musicService.getSongs()
-    setPlaylist(data)
-    setLoading(false)
-  }
+  useEffect(() => {
+    async function getMusic() {
+      let data = await musicService.getSongs()
+      setPlaylist(data)
+      setLoading(false)
+    }
+
+    getMusic()
+  }, [])
 
   async function songChoice() {
     let id = document.querySelector('input[name="playlist"]:checked').value
@@ -28,9 +31,6 @@ function Main() {
   return (
     <MainStyle>
       <MainBody>
-        <Button onClick={getMusic} style={{ border: '1px solid #cecece' }}>
-          Load Music
-        </Button>
         {!!playlist && !loading && (
           <form onChange={songChoice}>
             {playlist.map((song) => (
