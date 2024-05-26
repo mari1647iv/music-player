@@ -32,7 +32,7 @@ class MusicService {
     },
     {
       id: 4,
-      name: "(I'm Gonna) Love Me Again",
+      name: '(I’m Gonna) Love Me Again',
       artist: 'Elton John',
       duration: '4:11',
       url: 'assets/playlist/EltonJohn-LoveMeAgain.mp3'
