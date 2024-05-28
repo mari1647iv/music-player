@@ -113,7 +113,7 @@ export const Slider = styled.div`
     cursor: pointer;
   }
 
-  input:focus {
+  input:focus-visible {
     outline: none;
   }
 
@@ -124,6 +124,15 @@ export const Slider = styled.div`
 
     background-color: #cecece;
     box-shadow: -100vw 0 0 100vw #00ffc2;
+  }
+
+  input::before {
+    position: absolute;
+    content: '';
+    width: var(--seek-before-width);
+    height: 4px;
+    background-color: #00ffc2;
+    cursor: pointer;
   }
 
   div {

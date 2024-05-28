@@ -73,8 +73,17 @@ function Player(props) {
     dispatch(pause())
   }
 
-  function handleAudioNavigation() {
+  /** */
+  function showRangeProgress(rangeInput) {
+    const audioPlayerContainer = document.getElementById('audio-player-container')
+    audioPlayerContainer.style.setProperty('--seek-before-width', (rangeInput.value / rangeInput.max) * 100 + '%')
+  }
+  /** */
+
+  function handleAudioNavigation(event) {
+    audio.currentTime = event.target.value
     setCurrent(audio.currentTime)
+    showRangeProgress(event.target)
   }
 
   function switchToPrev() {
@@ -93,23 +102,23 @@ function Player(props) {
         <MinimizedPlayer>
           {!!currentSong && !loading && (
             <>
-              <Slider>
-                <>
-                  {!!audio.duration && (
+              <Slider id="audio-player-container">
+                {!!audio.duration && (
+                  <>
                     <input
                       type="range"
                       ref={progressBar}
                       value={audio.currentTime}
                       min="0"
                       max={audio.duration}
-                      onChange={handleAudioNavigation}
+                      onInput={handleAudioNavigation}
                     />
-                  )}
-                  <div>
-                    <span>{formatTime(current)}</span>
-                    <span className="song-duration">{currentSong.duration.replace(':', ' : ')}</span>
-                  </div>
-                </>
+                    <div>
+                      <span>{formatTime(audio.currentTime)}</span>
+                      <span className="song-duration">{formatTime(audio.duration)}</span>
+                    </div>
+                  </>
+                )}
               </Slider>
               <div>
                 <Container className="container-grow">
