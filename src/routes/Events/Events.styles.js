@@ -16,7 +16,7 @@ export const EventsStyle = styled.div`
 `
 
 export const EventsGrid = styled.div`
-  width: 80vw;
+  width: 85vw;
   display: flex;
   justify-content: space-between;
   align-items: stretch;

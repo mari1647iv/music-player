@@ -14,7 +14,7 @@ export const MainBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 80vw;
+  width: 85vw;
 
   button {
     margin-bottom: 60px;

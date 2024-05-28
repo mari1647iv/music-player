@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const HeaderStyle = styled.header`
   background: #1e1e1e;
   box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15);
-  width: 80vw;
-  padding: 32px 10vw;
+  width: 85vw;
+  padding: 32px 7.5vw;
 
   display: flex;
   justify-content: space-between;
